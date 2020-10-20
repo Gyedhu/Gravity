@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Image, MainHeader, SubHeader } from "./style";
+import { Container, Image } from "./style";
 import logo from "../../assets/logo.svg";
 
 const LandingPage = () => (
