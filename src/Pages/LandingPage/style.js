@@ -37,3 +37,19 @@ export const Image = styled.img`
         width: 100px;
     }
 `; 
+
+export const Link = styled.button`
+    background: none;
+    border: 0;
+    color: ${colors.light};
+    cursor: pointer;
+    font-family: "Expletus Sans";
+    font-size: 1.5em;
+    margin-top: 20px;   
+    outline: 0;
+    text-decoration: underline;
+
+    &:active {
+        opacity: .5;
+    }
+`;
