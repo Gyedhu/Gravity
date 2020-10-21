@@ -1,23 +1,14 @@
 import React, { useState, useEffect } from "react";
-import {
-    Container,
-    Header,
-    FormContainer,
-    Form,
-    FormHeader,
-    Label,
-    Input,
-    SubmitButton,
-    Link,
-    MobileHeader
-} from "./style";
-import logo from "../../assets/logo.svg";
+import { useForm } from "react-hook-form"
+
+import { View, Form, Input, Button } from "../../components";
 
 const SignInUp = () => {
 
     const [currentForm, setCurrentForm] = useState("signin");
     const [headerText, setHeaderText] = useState("Welcome back to gravity");
-    const duration = .5;
+
+    const { register, handleSubmit } = useForm();
 
     const toggleCurrentForm = e => {
         e.preventDefault();
@@ -28,51 +19,44 @@ const SignInUp = () => {
         setHeaderText(currentForm === "signin" ? "Welcome back to Gravity" : "Welcom to Gravity");
     }, [currentForm]);
 
+    const handleSigninSubmit = data => {
+        console.log(data);
+    }
+
+    const handleSignupSubmit = data => {
+        console.log(data);
+    }
+
     return (
-        <Container>
-            <Header>
-                <img src={logo} alt="logo" width="100" />
-                <h1>Gravity</h1>
-                <h2>{headerText}</h2>
-            </Header>
 
-            <FormContainer
+        <View>
+
+            <Form
                 show={currentForm === "signin"}
-                duration={duration}
+                header={headerText}
+                type="Signin"
+                onSubmit={handleSubmit(handleSigninSubmit)}
             >
-                <Form>
-                    <MobileHeader>Gravity</MobileHeader>
-                    <h2>{headerText}</h2>
-                    <FormHeader>Signin</FormHeader>
-                    <Label>Email</Label>
-                    <Input type="email" />
-                    <Label>Password</Label>
-                    <Input type="Password" />
-                    <SubmitButton>Submit</SubmitButton>
-                    <Link onClick={toggleCurrentForm}>Create a new account?</Link>
-                </Form>
+                <Input label="Email" type="email" ref={register({ required: true })} />
+                <Input label="Password" type="Password" ref={register({ required: true })} />
+                <Button title="Submit" />
+                <Button title="Create a new account?" type="link" onClick={toggleCurrentForm} />
+            </Form>
 
-            </FormContainer>
-
-            <FormContainer
+            <Form
                 show={currentForm === "signup"}
-                duration={duration}
+                type="Signup"
+                header={headerText}
+                onSubmit={handleSubmit(handleSignupSubmit)}
             >
-                <Form>
-                    <MobileHeader>Gravity</MobileHeader>
-                    <h2>{headerText}</h2>
-                    <FormHeader>SignUp</FormHeader>
-                    <Label>Username</Label>
-                    <Input type="text" />
-                    <Label>Email</Label>
-                    <Input type="email" />
-                    <Label>Password</Label>
-                    <Input type="Password" />
-                    <SubmitButton>Submit</SubmitButton>
-                    <Link onClick={toggleCurrentForm}>Already have an account?</Link>
-                </Form>
-            </FormContainer>
-        </Container>
+                <Input label="Username" type="text" ref={register({ required: true })} />
+                <Input label="Email" type="email" ref={register({ required: true })} />
+                <Input label="Password" type="password" ref={register({ required: true, pattern: /^[a-zA-Z]{7}$/ })} />
+
+                <Button title="Submit" />
+                <Button title="Already have an account?" type="link" onClick={toggleCurrentForm} />
+            </Form>
+        </View>
     );
 }
 
