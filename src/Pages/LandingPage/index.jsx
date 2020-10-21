@@ -5,7 +5,7 @@ import { Redirect } from "react-router-dom";
 
 const LandingPage = () => {
 
-    const [goto, setGoto] = useState("");
+    const [goto, setGoto] = useState("/");
     const changeRoute = () => setGoto("/sign-in-up");
 
     return (
