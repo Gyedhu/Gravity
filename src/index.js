@@ -8,8 +8,10 @@ import Router from "./Router";
 
 import { Provider } from "react-redux";
 import store from "./Redux/store";
-
-console.log(process.env);
+ 
+let apikey = process.env.REACT_APP_API_KEY;
+apikey = JSON.parse(apikey);
+alert(apikey.apikey);
 
 ReactDOM.render(
   <React.StrictMode>
