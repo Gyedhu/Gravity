@@ -1,5 +1,14 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { colors, mediaQuery } from "../../assets/theme";
+
+const pop_animation = keyframes`
+    0% {
+        transform: translateY(-30px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+`;
 
 export const Container = styled.div`   
     background: ${colors.light};   
@@ -13,7 +22,8 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.div` 
-    align-items: center;
+    animation: ${pop_animation} .75s forwards;
+    align-items: center; 
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -22,17 +32,17 @@ export const Header = styled.div`
     position: absolute;
     width: 50vw;
 
-    & > * { 
+    & > * {  
         color: ${colors.primary};
         font-family: 'Piedra', cursive;
-        font-size: 1.5em;
+        font-size: 2.5em;
         letter-spacing: 3px;
         margin: 0;
         text-align: center;
     }
 
     & > h1 {
-        font-size: 3em;
+        font-size: 4em;
     } 
 
     @media (max-width: ${mediaQuery.tablet}) {
@@ -59,30 +69,30 @@ export const FormContainer = styled.div`
     }
 `;
 
-export const Form = styled.div` 
-    background: ${colors.light};
+export const Form = styled.form`    
+    animation: ${pop_animation} .75s;
+    background: ${colors.light}; 
     border-top: 10px solid ${colors.secondary};
-    box-shadow: 0 5px 7px rgba(0, 0, 0, .25); 
+    box-shadow: 0 5px 7px rgba(0, 0, 0, .25);   
     display: flex;
     flex-direction: column;
-    font-family: "Expletus Sans"; 
-    min-height: 500px;
-    overflow: auto;
-    padding: 60px 20px;
-    width: 300px;
+    font-family: "Expletus Sans";   
+    max-height: 90%;
+    min-width: 300px;
+    padding: 60px 20px; 
 
-    @media (max-width: ${mediaQuery.mobile}) { 
-        height: 100%;
-        padding:  10px;
+    @media (max-width: ${mediaQuery.mobile}) {  
+        box-shadow: none;   
+        min-height: 100%;
+        padding:  20px;
         width: 100%;
     }
 `;
 
 export const FormHeader = styled.h1`
-    color: ${colors.tertiary};
+    color: ${colors.primary};
     font-size: 3em;
-    margin: 0 0 50px 0;
-
+    margin: 0 0 30px 0; 
 
     @media (max-width: ${mediaQuery.mobile}) { 
         font-size: 2.5em;
@@ -91,52 +101,76 @@ export const FormHeader = styled.h1`
 `;
 
 export const Label = styled.label`
-    color: ${colors.tertiary};
+    color: ${colors.primary};
     font-size: 1.4em;
     padding: 5px 0;
 `;
 
 export const Input = styled.input`
-    border: 1px solid ${colors.tertiary};
-    font-size: 1.4em;
+    background: #fafafa;
+    border: 0;
+    border-bottom: 2px solid ${colors.secondary};
+    font-size: 1.5em;
     font-family: inherit;
     margin-bottom: 20px;
-    padding: 10px;
     outline: 0;
+    padding: 12px;
+    transition: .5s;
 `;
 
 export const SubmitButton = styled.button`
     background: ${colors.secondary};
     border: 0;
     color: ${colors.light};
-    cursor: pointer;
-    font-size: 1.2em;
-    padding: 15px;
+    cursor: pointer; 
+    font-size: 1.8em;
+    margin-top: 20px;
     outline: 0;
+    padding: 12px;
 
     &:active{
         opacity: .5;
     }
 `;
 
-export const Image = styled.img` 
-    align-self: center; 
-    margin: 20px 0 10px 0;
-    width: 60px;
+export const MobileHeader = styled.h1`  
+        color: ${colors.primary};
+        font-family: inherit;
+        font-size: 4em;
+        letter-spacing: 1px;
+        margin: 20px 0 5px 0;
+        text-align: center; 
 
-    & + h3 {
-        color: ${colors.tertiary};
-        font-family: "Piedra";
+    & + h2 {
+        color: ${colors.primary};
+        font-family: inherit; 
         font-size: 1.5em;
+        letter-spacing: inherit;
         margin: 0 0 50px 0;
         text-align: center;
     }
-
+        
     @media (min-width: ${mediaQuery.mobile}) {
-        display: none;
+        display: none;  
 
-        & + * {
+        & + h2 {
             display: none;
         }
     }
-`;  
+`;
+
+export const Link = styled.button`
+    background: none;
+    border: 0;
+    color: ${colors.secondary};
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1.5em;
+    margin-top: 20px;
+    outline: 0;
+    text-decoration: underline;
+
+    &:active {
+        opacity: .5;
+    }
+`;

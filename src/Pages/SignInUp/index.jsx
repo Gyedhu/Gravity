@@ -1,21 +1,39 @@
-import React, { useState } from "react";
-import { Container, Header, FormContainer, Form, FormHeader, Label, Image, Input, SubmitButton } from "./style";
-import logo from "../../assets/logo.svg";  
+import React, { useState, useEffect } from "react";
+import {
+    Container,
+    Header,
+    FormContainer,
+    Form,
+    FormHeader,
+    Label,
+    Input,
+    SubmitButton,
+    Link,
+    MobileHeader
+} from "./style";
+import logo from "../../assets/logo.svg";
 
 const SignInUp = () => {
 
     const [currentForm, setCurrentForm] = useState("signin");
+    const [headerText, setHeaderText] = useState("Welcome back to gravity");
     const duration = .5;
 
-    const toggleCurrentForm = () =>
+    const toggleCurrentForm = e => {
+        e.preventDefault();
         setCurrentForm(currentForm => currentForm === "signin" ? "signup" : "signin");
+    }
+
+    useEffect(() => {
+        setHeaderText(currentForm === "signin" ? "Welcome back to Gravity" : "Welcom to Gravity");
+    }, [currentForm]);
 
     return (
         <Container>
-            <Header onClick={toggleCurrentForm}>
+            <Header>
                 <img src={logo} alt="logo" width="100" />
                 <h1>Gravity</h1>
-                <h2>Welcome to the world of Gravity</h2>
+                <h2>{headerText}</h2>
             </Header>
 
             <FormContainer
@@ -23,24 +41,26 @@ const SignInUp = () => {
                 duration={duration}
             >
                 <Form>
-                    <Image src={logo} alt="logo" />
-                    <h3>Welcome back to Gravity</h3>
+                    <MobileHeader>Gravity</MobileHeader>
+                    <h2>{headerText}</h2>
                     <FormHeader>Signin</FormHeader>
                     <Label>Email</Label>
                     <Input type="email" />
                     <Label>Password</Label>
                     <Input type="Password" />
-                    <SubmitButton onClick={toggleCurrentForm}>Submit</SubmitButton>
+                    <SubmitButton>Submit</SubmitButton>
+                    <Link onClick={toggleCurrentForm}>Create a new account?</Link>
                 </Form>
-            </FormContainer>
 
+            </FormContainer>
 
             <FormContainer
                 show={currentForm === "signup"}
                 duration={duration}
             >
                 <Form>
-                    <Image src={logo} alt="logo" />
+                    <MobileHeader>Gravity</MobileHeader>
+                    <h2>{headerText}</h2>
                     <FormHeader>SignUp</FormHeader>
                     <Label>Username</Label>
                     <Input type="text" />
@@ -48,7 +68,8 @@ const SignInUp = () => {
                     <Input type="email" />
                     <Label>Password</Label>
                     <Input type="Password" />
-                    <SubmitButton onClick={toggleCurrentForm}>Submit</SubmitButton>
+                    <SubmitButton>Submit</SubmitButton>
+                    <Link onClick={toggleCurrentForm}>Already have an account?</Link>
                 </Form>
             </FormContainer>
         </Container>
