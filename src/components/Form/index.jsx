@@ -1,15 +1,18 @@
 import React from "react";
 import { Container, FormBox, Header } from "./style";
+import logo from "../../assets/logo.svg";
 
-const Form = ({ children, show, onSubmit, header, type }) => {
+const Form = ({ children, show, onSubmit, header }) => {
+
+
     return (
         <Container show={show}>
-            <FormBox onSubmit={onSubmit}> 
+            <FormBox onSubmit={onSubmit}>
                 <Header>
-                    <h1>Gravity</h1>
-                    <h2>{header}</h2>
-                    <p>{type}</p>
-                </Header> 
+                    <img src={logo} alt="logo" />
+                    <p>Gravity</p>
+                    <p>{header}</p>
+                </Header>
 
                 {children}
             </FormBox>

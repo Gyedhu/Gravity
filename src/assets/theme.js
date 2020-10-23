@@ -3,7 +3,9 @@ export const colors = {
     light: "#FEFEFE",
     primary: "#2A3744",
     secondary: "#6782E0",
-    tertiary: "#4D4D4D"
+    tertiary: "#4D4D4D",
+    error: "tomato",
+    success: "green"
 };
 
 export const mediaQuery = {

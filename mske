@@ -1,8 +1,0 @@
-#!/bin/bash
-
-cd src;
-cd Pages;
-cd LandingPage;
-ls;
-cd ..;
-cp -b LandingPage ../../file;
