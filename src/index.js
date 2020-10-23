@@ -3,19 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter } from "react-router-dom";
-import dotenv from "dotenv";
+import { BrowserRouter } from "react-router-dom"; 
 import { Provider } from "react-redux";
 import store from "./Redux/store";
 import firebase from "firebase/app";
 
-// Getting environmenet variables
-dotenv.config();
-
 // Firebase configuration
 const firebaseConfig = process.env.REACT_APP_FIREBASE_API_KEY;
 const config = JSON.parse(firebaseConfig);
-firebase.initializeApp(config); 
+firebase.initializeApp(config);
 
 ReactDOM.render(
   <React.StrictMode>
