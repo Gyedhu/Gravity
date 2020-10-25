@@ -1,8 +1,0 @@
-#!/bin/bash
-
-cd src;
-cd Pages;
-ls;
-cp LandingPage ~/Desktop/gravity/newFile;
-echo "Happy coding :)";
-
