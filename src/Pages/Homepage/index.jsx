@@ -41,8 +41,7 @@ const Homepage = ({ name, email, imageUrl, profession, stars }) => {
                 {
                     currentRoute === "code" &&
                     <Code></Code>
-                }
-
+                } 
             </ContentContainer>
         </View >
     );

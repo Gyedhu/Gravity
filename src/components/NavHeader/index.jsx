@@ -15,9 +15,9 @@ const NavHeader = () => {
                     <img src={logo} alt="logo" />
                     <span>Gravity</span>
                 </Logo>
-                <span onClick={() => {auth().signOut(); setSignin(true)}} style={{ fontSize: "2em" }} className="material-icons">code</span>
+                <span onClick={() => { auth().signOut(); setSignin(true) }} style={{ fontSize: "2em" }} className="material-icons">code</span>
             </Header>
-            {signin && <Redirect to="/sign-in-up" />}
+            {signin && <Redirect to="/" />}
         </Container>
     );
 }
