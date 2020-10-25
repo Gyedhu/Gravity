@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter } from "react-router-dom"; 
+import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./Redux/store";
 import firebase from "firebase/app";
+import dotenv from "dotenv";
 
 // Firebase configuration
+dotenv.config();
 const firebaseConfig = process.env.REACT_APP_FIREBASE_API_KEY;
 const config = JSON.parse(firebaseConfig);
 firebase.initializeApp(config);
