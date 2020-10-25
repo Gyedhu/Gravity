@@ -19,7 +19,7 @@ const Notification = ({ notification, setNotification }) => {
         if (notification.length > 0) {
             setTimeout(() => {
                 setNotification("");
-            }, 3000);
+            }, 2000);
         }
     }, [notification, setNotification]);
 

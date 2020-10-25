@@ -2,19 +2,51 @@ import React, { useEffect } from 'react';
 import './App.css';
 import Router from './Router';
 import { Loading, Notification } from './components';
-import { auth } from "firebase";
+import { auth, database } from "firebase";
+import { connect } from 'react-redux';
+import { setUserData, setLoading, setNotification } from './Redux/actions';
 
-function App() {
+
+const mapDispatchToProps = dispatch => ({
+  setUserData: (uid, name, email, url, profession, stars) => dispatch(setUserData({ uid, name, email, url, profession, stars })),
+  setLoading: message => dispatch(setLoading(message)),
+  setNotification: message => dispatch(setNotification(message))
+});
+
+function App({ setUserData, setLoading, setNotification }) {
+
 
   useEffect(() => {
-    auth().onAuthStateChanged(user => {
-      if (user) {
-        alert("user available");
-      } else {
-        // alert("no user");
+
+    const getUserInfo = async (uid) => {
+      const infoRef = database().ref("users/info/" + uid);
+      setLoading("Fetching user info");
+
+      try {
+        const info = await infoRef.once("value");
+        const { name, email, profession, profileImage, stars } = info.val();
+        setUserData(uid, name, email, profileImage, profession, stars);
       }
-    })
-  }, []);
+      catch (error) {
+        setNotification("Error while fetching data");
+      }
+      finally {
+        setLoading("");
+      }
+    }
+
+    const unsubscribe = auth().onAuthStateChanged(user => {
+      if (user) {
+        const { uid } = user;
+        // getUserInfo(uid);
+      } else {
+        // alert("signout");
+      }
+    });
+
+    return () => unsubscribe();
+
+  }, [setLoading, setNotification, setUserData]);
 
   return (
     <>
@@ -25,4 +57,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect(null, mapDispatchToProps)(App);

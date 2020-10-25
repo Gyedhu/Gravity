@@ -23,7 +23,7 @@ export const Container = styled.div`
     position: absolute;
     transform: translate(-50%, 0);
     width: fit-content; 
-    z-index: 1;
+    z-index: 2;
 `;
 
 export const NotificationLogo = styled.span`

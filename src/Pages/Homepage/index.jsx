@@ -1,92 +1,51 @@
-import React from "react";
-import { View } from "../../components/index";
-import styled from "styled-components";
-import { colors } from "../../assets/theme";
+import React, { useState } from "react";
+import { View, NavHeader, ProfileCard, ContentContainer, Dashboard } from "../../components/index";
+import { connect } from "react-redux";
+import Code from "../Code";
 
-const Header = styled.div`
-    background: ${colors.secondary};
-    box-sizing: border-box;
-    display: flex;
-    flex: 1; 
-    flex-direction: column;
-    justify-content: center;
-    width: 100vw;
 
-    & > h1 {
-        color: ${colors.light};
-        font-family: "Expletus Sans";
-        font-size: 3em;
-        padding: 20px;
-        text-align: right;
-    }
-`;
+const mapStateToProps = state => ({
+    name: state.user.name,
+    email: state.user.email,
+    imageUrl: state.user.imageUrl,
+    profession: state.user.profession,
+    stars: state.user.stars
+});
 
-const Container = styled.div`
-    background: ${colors.light};
-    box-sizing: border-box;
-    flex: 1.5;
-    position: relative;
-    width: 100vw;
-`;
+const mapDispatchToProps = dispatch => ({
+});
 
-const ProfileBox = styled.div`
-    background: ${colors.light};
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.25);
-    box-sizing: border-box;
-    color: ${colors.primary};
-    display: flex;
-    flex-direction: column;
-    font-family: "Expletus Sans";
-    height: 400px;
-    left: 50px;
-    position: absolute;
-    ${'' /* top: -30%; */}
-    width: 250px; 
-    padding: 10px;
+const Homepage = ({ name, email, imageUrl, profession, stars }) => {
 
-        & > * {
-            margin: 0;
-            text-align: center;
-        }
+    const [currentRoute, setCurrentRoute] = useState("profile");
 
-        & > div {
-        background: url("https://www.pngitem.com/pimgs/m/516-5167304_transparent-background-white-user-icon-png-png-download.png") center center;
-        background-size: cover;  
-        flex: 1;
-    }
+    const goto = route => setCurrentRoute(route);
 
-    & > p:nth-child(2) {
-        font-size: 2em; 
-        margin-top: 20px;
-    }
-    
-
-    & > p:nth-child(3) { 
-        text-decoration: underline;
-    }
-    
-    & > p  {
-        font-size: 1.5em;   
-    }
-`;
-
-const Homepage = () => {
     return (
         <View>
-            {/* <Header>
-                <h1>Share you knowledge</h1>
-            </Header> */}
-            <Container>
-                <ProfileBox>
-                    <div></div>
-                    <p>Yedhumohanan.G</p>
-                    <p>gyedhumohanan@gmail.com</p>
-                    <p>Full Stack Web Developer</p>
-                    <p>Student</p>
-                </ProfileBox>
-            </Container>
+            <NavHeader />
+            <ContentContainer>
+                {
+                    currentRoute === "profile" &&
+                    <>
+                        <ProfileCard
+                            url={imageUrl}
+                            name={name}
+                            email={email}
+                            profession={profession}
+                            rating={stars}
+                        />
+                        <Dashboard goto={goto} />
+                    </>
+                }
+                {
+                    currentRoute === "code" &&
+                    <Code></Code>
+                }
+
+            </ContentContainer>
         </View >
     );
 }
 
-export default Homepage;
+export default connect(mapStateToProps, mapDispatchToProps)(Homepage);

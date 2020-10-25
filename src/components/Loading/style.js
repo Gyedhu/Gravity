@@ -26,7 +26,7 @@ export const Container = styled.div`
     top: 0; 
     transform: translate(-50%, 0%);
     width: fit-content; 
-    z-index: 1;
+    z-index: 2;
 `;
 
 const spinning = keyframes`
