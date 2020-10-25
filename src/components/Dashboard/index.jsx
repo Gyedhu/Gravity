@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Content } from "./style";
+import { Container } from "./style";
 import CodeList from "../CodeList";
 import DashboardContainer from "../DashboardContainer";
 
