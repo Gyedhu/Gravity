@@ -12,6 +12,7 @@ import dotenv from "dotenv";
 // Firebase configuration
 dotenv.config();
 const apikey = process.env.REACT_APP_FIREBASE_API_KEY;
+console.log(apikey);
 const firebaseConfig = JSON.parse(apikey);
 firebase.initializeApp(firebaseConfig);
 
