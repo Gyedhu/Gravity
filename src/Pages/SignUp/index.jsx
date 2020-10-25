@@ -22,9 +22,12 @@ const SingUp = ({ currentForm, goto, setSignupData }) => {
         goto("signin");
     }
 
+    // Pushing read data to the state
     const handleSignupSubmit = data => {
         const { username, email, password } = data;
         setSignupData(username, email, password);
+
+        // Changing local route to 'other_info'
         goto("other_info");
     }
 

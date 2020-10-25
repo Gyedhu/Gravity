@@ -4,12 +4,12 @@ import { SignIn, SignUp, OtherInfo } from "..";
 
 const SignInUp = () => {
 
+    // Local route
     const [currentForm, setCurrentForm] = useState("signin");
 
-    const goto = (page) => {
-        setCurrentForm(page);
-    }
-
+    //   for change local route
+    const goto = (page) => setCurrentForm(page); 
+    
     return (
         <View>
             <SignIn currentForm={currentForm} goto={goto} />

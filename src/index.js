@@ -11,10 +11,9 @@ import dotenv from "dotenv";
 
 // Firebase configuration
 dotenv.config();
-const firebaseConfig = process.env.REACT_APP_FIREBASE_API_KEY;
-alert(firebaseConfig);
-const config = JSON.parse(firebaseConfig);
-firebase.initializeApp(config);
+const apikey = process.env.REACT_APP_FIREBASE_API_KEY;
+const firebaseConfig = JSON.parse(apikey);
+firebase.initializeApp(firebaseConfig);
 
 ReactDOM.render(
   <React.StrictMode>

@@ -4,6 +4,7 @@ import { Form, Input, Button, ImagePicker } from "../../components";
 import { setLoading, setNotification, setOtherInfo } from "../../Redux/actions";
 import { connect } from "react-redux";
 import { auth, database, storage } from "firebase";
+import { Redirect } from "react-router-dom";
 
 const mapStateToProps = state => ({
     name: state.user.name,
@@ -25,20 +26,40 @@ const OtherInfo = ({ currentForm, goto, email, name, password, setLoading, setNo
 
     const [url, setUrl] = useState("");
     const [file, setFile] = useState(null);
+    const [homepage, setHomepage] = useState(false);
 
     const changePage = e => {
         e.preventDefault();
         goto("signup");
     }
 
+    const pushUserData = (uid, data, url) => {
+        const userRef = database().ref(`users/info/${uid}`);
+        userRef.set({
+            name: name,
+            email: email,
+            profileImage: url,
+            dob: data["date of birth"],
+            profession: data.profession,
+            gender: data.gender
+        });
+    }
+
+    // Signup
     const handleOtherInfoSubmit = async data => {
 
+        // Set loading with message
         setLoading("Signing up...");
 
         try {
             // Signin up with email and password
             const userData = await auth().createUserWithEmailAndPassword(email, password);
+
+            // if success
+            // get the user
             const { user } = userData;
+
+            // make a url variable to store image url
             let url = null;
 
             // Uploading profile photo
@@ -64,21 +85,23 @@ const OtherInfo = ({ currentForm, goto, email, name, password, setLoading, setNo
                     async () => {
                         setNotification("Profile image uploaded successful");
                         url = await storageRef.getDownloadURL();
-                        setUrl(url); 
-                        
+                        setUrl(url);
+
                         // Uploading user information into databast
-                        const userRef = database().ref(`users/info/${user.uid}`);
-                        userRef.set({
-                            name: name,
-                            email: email,
-                            profileImage: url,
-                            dob: data["date of birth"],
-                            profession: data.profession,
-                            gender: data.gender
-                        }); 
+                        pushUserData(user.uid, data, url);
                         setLoading("");
+
+                        // Change route to homepage
+                        setHomepage(true);
                     }
                 );
+            } else {
+                // Uploading user information into databast 
+                pushUserData(user.uid, data, null);
+                setLoading("");
+
+                // Change route to homepage
+                setHomepage(true);
             }
         }
         catch (error) {
@@ -88,51 +111,54 @@ const OtherInfo = ({ currentForm, goto, email, name, password, setLoading, setNo
         }
     }
 
-    // Pack an image
-    const imagePicker = (file, url) => {
+    // Pick an image
+    const pickImage = (file, url) => {
         setFile(file);
         setUrl(url);
     }
 
     return (
-        <Form
-            show={currentForm === "other_info"}
-            header="Welcome"
-            onSubmit={handleSubmit(handleOtherInfoSubmit)}
-        >
-            <ImagePicker url={url} onClick={imagePicker} />
-            <Input
-                label="Gender"
-                ref={register({ required: true })}
-                message={errors.gender && "Please fill!"}
-                options={["Male", "Female", "Other"]}
-            />
+        <>
+            <Form
+                show={currentForm === "other_info"}
+                header="Welcome"
+                onSubmit={handleSubmit(handleOtherInfoSubmit)}
+            >
+                <ImagePicker url={url} onClick={pickImage} />
+                <Input
+                    label="Gender"
+                    ref={register({ required: true })}
+                    message={errors.gender && "Please fill!"}
+                    options={["Male", "Female", "Other"]}
+                />
 
-            <Input
-                label="Date of Birth"
-                type="Date"
-                ref={register({ required: true })}
-                message={errors["date of birth"] && "Please enter you date of birth!"}
-            />
+                <Input
+                    label="Date of Birth"
+                    type="Date"
+                    ref={register({ required: true })}
+                    message={errors["date of birth"] && "Please enter you date of birth!"}
+                />
 
-            <Input
-                label="Profession"
-                ref={register({ required: true })}
-                message={errors.profession && "Please enter you profession!"}
-                options={[
-                    "Engineer",
-                    "Doctor",
-                    "Web developer",
-                    "Full stack developer",
-                    "Electretian",
-                    "Software developer",
-                    "Teacher"
-                ]}
-            />
+                <Input
+                    label="Profession"
+                    ref={register({ required: true })}
+                    message={errors.profession && "Please enter you profession!"}
+                    options={[
+                        "Engineer",
+                        "Doctor",
+                        "Web developer",
+                        "Full stack developer",
+                        "Electretian",
+                        "Software developer",
+                        "Teacher"
+                    ]}
+                />
 
-            <Button type="button" title="Submit" />
-            <Button title="<< Previsous?" link={true} onClick={changePage} />
-        </Form >
+                <Button type="button" title="Submit" />
+                <Button title="<< Previsous?" link={true} onClick={changePage} />
+            </Form >
+            {homepage && <Redirect to="/homepage" />}
+        </>
     );
 }
 

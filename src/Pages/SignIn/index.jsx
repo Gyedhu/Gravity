@@ -24,17 +24,29 @@ const SignIn = ({ currentForm, goto, setLoading, setNotification, }) => {
         goto("signup");
     }
 
+    // Signin
     const handleSigninSubmit = async data => {
 
+        // email and password
         const { email, password } = data;
-        setLoading("Signing in..."); 
-        
+
+        // Set loading with message
+        setLoading("Signing in...");
+
         try {
+            // Signin with email and password
             await auth().signInWithEmailAndPassword(email, password);
+
+            // If success
+            // Set notification with success message
             setNotification("Signed in successfull");
+
+            // Change route to Homepage
             setHomepage(true);
         }
         catch (error) {
+            // If not success
+            // Set notification with error message
             if (error.code === "auth/wrong-password")
                 setNotification("Given password is wrong!..Please check your password and try again");
             else if (error.code === "auth/no-user-found")
@@ -43,6 +55,7 @@ const SignIn = ({ currentForm, goto, setLoading, setNotification, }) => {
                 setNotification("Something went wrong...Please try again");
         }
         finally {
+            // finally set loading empty
             setLoading("");
         }
 
