@@ -2,14 +2,14 @@ import { SET_SIGNUP_DATA, SET_OTHER_INFO, CLEAR_USER_DATA, SET_USER_DATA } from 
 
 const initialState = {
     uid: null,
-    name: "Yedhumohanan.G",
-    email: "gyedhumohanan@gmail.com",
+    name: null,
+    email: null,
     password: null,
-    imageUrl: "https://firebasestorage.googleapis.com/v0/b/gravity-0202.appspot.com/o/Krx01cfOBjTLY1vX4Jgmc1eJ7593%2FprofilePicture.jpg?alt=media&token=7082277e-1601-48e0-a09f-9a66ec8615b7",
+    imageUrl: null,
     gender: null,
     dob: null,
-    profession: "Web developer",
-    stars: 2
+    profession: null,
+    stars: null
 };
 
 const reducer = (state = initialState, action = {}) => {

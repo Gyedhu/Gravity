@@ -50,7 +50,7 @@ const OtherInfo = ({ currentForm, goto, email, name, password, setLoading, setNo
                 const task = storageRef.put(file);
 
                 task.on("state_changed",
-                
+
                     // Getting displaying uploading progress
                     snap => {
                         let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
@@ -64,22 +64,22 @@ const OtherInfo = ({ currentForm, goto, email, name, password, setLoading, setNo
                     async () => {
                         setNotification("Profile image uploaded successful");
                         url = await storageRef.getDownloadURL();
-                        setUrl(url);
+                        setUrl(url); 
+                        
+                        // Uploading user information into databast
+                        const userRef = database().ref(`users/info/${user.uid}`);
+                        userRef.set({
+                            name: name,
+                            email: email,
+                            profileImage: url,
+                            dob: data["date of birth"],
+                            profession: data.profession,
+                            gender: data.gender
+                        }); 
                         setLoading("");
                     }
                 );
             }
-
-            // Uploading user information into databast
-            const userRef = database().ref(`users/info/${user.uid}`);
-            userRef.set({
-                name: name,
-                email: email,
-                url: url,
-                dob: data["date of birth"],
-                profession: data.profession,
-                gender: data.gender
-            });
         }
         catch (error) {
             setNotification(error.message);

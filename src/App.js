@@ -38,14 +38,11 @@ function App({ setUserData, setLoading, setNotification }) {
     const unsubscribe = auth().onAuthStateChanged(user => {
       if (user) {
         const { uid } = user;
-        // getUserInfo(uid);
-      } else {
-        // alert("signout");
+        getUserInfo(uid);
       }
     });
 
     return () => unsubscribe();
-
   }, [setLoading, setNotification, setUserData]);
 
   return (

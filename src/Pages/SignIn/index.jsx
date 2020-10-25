@@ -61,7 +61,7 @@ const SignIn = ({ currentForm, goto, setLoading, setNotification, }) => {
                 <Button title="Submit" />
                 <Button title="Create a new account?" link={true} onClick={changePage} />
             </Form>
-            {homepage && <Redirect to="/" />}
+            {homepage && <Redirect to="/homepage" />}
         </>
     );
 }

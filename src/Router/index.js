@@ -5,7 +5,7 @@ import { LandingPage, SignInUp, Homepage } from "../Pages/index";
 const Router = () => {
     return (
         <Switch>
-            <Route exact path="/" component={Homepage} />
+            <Route exact path="/homepage" component={Homepage} />
             <Route   path="/LandingPage" component={LandingPage} />
             <Route path="/sign-in-up" component={SignInUp} />
         </Switch>
