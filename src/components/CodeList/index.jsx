@@ -12,7 +12,46 @@ const CodeList = ({ list }) => {
                         <span>Simple Calculator using js</span>
                         <div>
                             <span>Line: 25</span>
-                            <span>1 day ago</span>
+                        </div>
+                    </CodeData>
+                </CodeItem>
+
+                <CodeItem>
+                    <span>JS</span>
+                    <CodeData>
+                        <span>Simple Calculator using js</span>
+                        <div>
+                            <span>Line: 25</span>
+                        </div>
+                    </CodeData>
+                </CodeItem>
+
+                <CodeItem>
+                    <span>JS</span>
+                    <CodeData>
+                        <span>Simple Calculator using js</span>
+                        <div>
+                            <span>Line: 25</span>
+                        </div>
+                    </CodeData>
+                </CodeItem>
+
+                <CodeItem>
+                    <span>JS</span>
+                    <CodeData>
+                        <span>Simple Calculator using js</span>
+                        <div>
+                            <span>Line: 25</span>
+                        </div>
+                    </CodeData>
+                </CodeItem>
+
+                <CodeItem>
+                    <span>JS</span>
+                    <CodeData>
+                        <span>Simple Calculator using js</span>
+                        <div>
+                            <span>Line: 25</span>
                         </div>
                     </CodeData>
                 </CodeItem>

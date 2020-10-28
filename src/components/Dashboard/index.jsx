@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { Container } from "./style";
-import CodeList from "../CodeList";
+// import CodeList from "../CodeList";
 import DashboardContainer from "../DashboardContainer";
 
-const Dashboard = () => {
-    const [page, setPage] = useState(1);
+const Dashboard = ({ goto }) => {
 
     return (
-        <Container page={page}>
-            <span onClick={() => setPage(page => page === 1 ? 2 : 1)} className="material-icons">{page === 1 ? "navigate_next" : "navigate_before"}</span>
-            <DashboardContainer />
-            <CodeList />
+        <Container>
+            <DashboardContainer goto={goto} />
+            {/* <CodeList /> */}
         </Container>
     );
 }

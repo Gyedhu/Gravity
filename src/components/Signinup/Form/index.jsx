@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, FormBox, Header } from "./style";
-import logo from "../../assets/logo.svg";
+import logo from "../../../assets/logo.svg";
 
 const Form = ({ children, show, onSubmit, header }) => {
 

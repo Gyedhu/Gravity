@@ -1,15 +1,30 @@
-import styled from "styled-components";
-import { colors } from "../../assets/theme";
+import styled, { keyframes } from "styled-components";
+import { colors, mediaQuery } from "../../assets/theme";
+
+const popup = keyframes`
+    0% {
+        transform: scaleX(0);
+        opacity: .2;
+    }
+    100% {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+`
 
 export const Container = styled.div` 
-    background: white; 
-    box-sizing: border-box;
-    ${'' /* border-top: 5px solid ${colors.secondary}; */}
+    background: ${colors.primary};   
+    border-radius: 2px;
     display: flex;
     flex: 1;
     flex-direction: column; 
-    height: 100%;   
+    height: 350px;   
+    min-width: fit-content;
     overflow: hidden;  
+
+    @media (max-width: ${mediaQuery.mobile}){
+        margin: 0 5px;
+    }
 
     &  * {
         box-sizing: border-box;
@@ -17,9 +32,9 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.div` 
-    background: white;  
+    background: ${colors.primary};  
     box-sizing: border-box; 
-    color: ${colors.primary};
+    color: ${colors.light};
     font-size: 2em;
     font-family: Bellefair;
     padding: 30px;
@@ -29,13 +44,11 @@ export const Header = styled.div`
 export const List = styled.div`  
     box-sizing: border-box;  
     display: flex;
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     flex-direction: column; 
     overflow: auto;
-    width: 100%; 
-
-    & > div:nth-child(1) { 
-        margin: 0 10px 10px 10px;
-    } 
+    width: 100%;  
 
     &::-webkit-scrollbar {
         display: none;
@@ -44,8 +57,8 @@ export const List = styled.div`
 `;
 
 export const CodeItem = styled.div` 
-    background: #BCD; 
-    border: 1px solid #BCD;
+    animation: ${popup} .5s forwards;
+    background: ${colors.primary};   
     cursor: pointer;
     display: flex;
     flex-direction: column; 
@@ -56,8 +69,8 @@ export const CodeItem = styled.div`
 
     & > span {
         ${'' /* background: ${props => props.language === "js" ? "dodgerblue" : props.language === "c++" ? "Seagreen" : "tomat"}; */}
-        background: ${colors.secondary};
-        color: ${colors.light};
+        background: ${colors.light};
+        color: ${colors.primary};
         font-size: 3em;
         padding: 5px;
     }

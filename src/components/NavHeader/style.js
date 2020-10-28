@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors  } from "../../assets/theme";
 
 export const Container = styled.div` 
     background: white;   
@@ -32,3 +33,36 @@ export const Logo = styled.div`
     }
 `;
 
+export const NavIcons = styled.div`
+    align-items: center; 
+    display: flex;
+
+    & > span {
+        align-items: center; 
+        color: ${colors.primary};
+        display: flex;
+        font-size: 3em; 
+        justify-content: flex-end; 
+        width: 50px;
+    }
+    
+    ${'' /* @media (max-width: ${mediaQuery.mobile}) {
+        align-items: center;
+        background: ${colors.light};
+        box-shadow: 0 -3px 5px rgba(0, 0, 0, .25);
+        bottom: 0;  
+        height: fit-content;
+        justify-content: space-around; 
+        left: 0;
+        padding: 10px;
+        position: absolute;
+        width: 100vw;
+
+        & > span {
+            color: ${colors.primary};
+            font-size: 3em;
+            justify-content: center; 
+            padding: 10px;
+        }
+    } */}
+`;

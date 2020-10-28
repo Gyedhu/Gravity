@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: center;
     height: 100%;
+    overflow: hidden;
     width: 100%;
 }
 
@@ -22,13 +23,13 @@
 }
 
 .container__editor {   
-    background-color: #F9F9F9;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, .15);
+    background-color: #F9F9F9; 
     box-sizing: border-box;   
     font-family: "Expletus Sans";
-    flex: 1;
-    font-size: 18px;  
-    height: 100%;    
+    flex: 1; 
+    min-height: 100%;
+    height: fit-content;     
+    width: 100%;
 }
   
 

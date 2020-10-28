@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container } from "./style";
-import { colors } from "../../assets/theme";
+import { colors } from "../../assets/theme"; 
 
 const Rating = ({count}) => { 
     
@@ -23,7 +23,7 @@ const Rating = ({count}) => {
             {
                 ratingArray.map((value, index) =>
                     <span
-                        style={{ color: value ? colors.secondary : "#BCD" }}
+                        style={{ color: value ? "orange" : colors.tertiary }}
                         className="material-icons"
                         key={index}
                     >

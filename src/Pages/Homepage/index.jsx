@@ -12,8 +12,6 @@ const mapStateToProps = state => ({
     stars: state.user.stars
 });
 
-const mapDispatchToProps = dispatch => ({
-});
 
 const Homepage = ({ name, email, imageUrl, profession, stars }) => {
 
@@ -24,7 +22,7 @@ const Homepage = ({ name, email, imageUrl, profession, stars }) => {
     return (
         <View>
             <NavHeader />
-            <ContentContainer>
+            <ContentContainer> 
                 {
                     currentRoute === "profile" &&
                     <>
@@ -40,11 +38,11 @@ const Homepage = ({ name, email, imageUrl, profession, stars }) => {
                 }
                 {
                     currentRoute === "code" &&
-                    <Code></Code>
-                } 
+                    <Code goto={goto}></Code>
+                }
             </ContentContainer>
         </View >
     );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
+export default connect(mapStateToProps, null)(Homepage);

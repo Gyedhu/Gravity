@@ -5,12 +5,12 @@ import Rating from "../Rating";
 const ProfileCard = ({ url, name, email, profession, rating }) => {
     return (
         <Container>
-            <ProfileImage url={url} />
+            <ProfileImage url={url} delay="0" />
             <UserInfo>
-                <div>{name}</div>
-                <div>{email}</div>
-                <div>{profession}</div>
-                <Rating count={rating} />
+                <div  delay=".1">{name}</div>
+                <div  delay=".2">{email}</div>
+                <div  delay=".3">{profession}</div>
+                <Rating count={rating}  delay=".4" />
             </UserInfo>
         </Container>
     );

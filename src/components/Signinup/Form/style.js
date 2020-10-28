@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import { colors, mediaQuery } from "../../assets/theme";
+import { colors, mediaQuery } from "../../../assets/theme";
 
 const pop_animation = keyframes`
     0% { transform: translateY(-30px); }

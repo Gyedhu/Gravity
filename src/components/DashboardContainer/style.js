@@ -1,50 +1,64 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { colors, mediaQuery } from "../../assets/theme";
 
 
-export const Container = styled.div` 
+export const Container = styled.div`  
     box-sizing: border-box;
-    display: grid;
+    display: flex;
+    ${'' /* display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;  */}
     flex: 1; 
     flex-wrap: wrap;
-    grid-gap: 5px;   
-    grid-template-columns: repeat(2, calc(1010px / 4));  
-    grid-template-rows: repeat(2, calc(1010px / 4));  
-    margin-right: 5px; 
+    grid-gap: 2px;      
     width: 100%;    
 
-    @media (max-width: ${mediaQuery.tablet}) {   
-        grid-template-columns: repeat(2, 1fr);  
-        grid-template-rows: repeat(2, 1fr);  
-        height: 100vw; 
+    @media (max-width: ${mediaQuery.mobile}){
+        padding: 0 5px;
     }
 `;
 
-
-
 export const Box = styled.div` 
-    align-items: center;  
-    background: white; 
-    ${'' /* border-top: 5px solid ${colors.secondary}; */}
+    animation: ${keyframes`
+        0% {
+            transform: scale(0);
+            opacity: .2;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    `} .5s ${props => props.delay}s forwards;
+    align-items: center;   
+    border-radius: 20px;
     cursor: pointer;
     display: flex;
-    flex: 1; 
-    flex-direction: column;
-    justify-content: center; 
+    flex: 1;   
+    opacity: .2;
+    padding: 20px;
+    transform: scale(0);
     transition: .5s;
     user-select: none;
 
     & > span {
-        color: ${colors.secondary}; 
-        font-size: 5em; 
-        padding: 10px;
+        align-items: center;  
+        background: ${colors.secondary};
+        border-radius: 50%;
+        color: ${colors.light}; 
+        display: flex;
+        font-size: 2.5em; 
+        height: 50px;
+        justify-content: center; 
+        margin: 0 5px;
+        padding: 5px;
+        width: 50px;
     }
 
     & > span:last-child {
-        color: ${colors.tertiary};
+        background: transparent;
+        color: ${colors.primary};
         font-family: Bellefair;
         font-size: 2em;
-        font-weight: bold;
+        font-weight: bold; 
     }
 
     &:active {

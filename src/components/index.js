@@ -1,13 +1,14 @@
 export { default as View } from "./View";
-export { default as Form } from "./Form";
-export { default as Input } from "./Input";
-export { default as Button } from "./Button";
+export { default as Form } from "./Signinup/Form";
+export { default as Input } from "./Signinup/Input";
+export { default as Button } from "./Signinup/Button";
 export { default as Loading } from "./Loading";
 export { default as Notification } from "./Notification";
-export { default as ImagePicker } from "./ImagePicker";
+export { default as ImagePicker } from "./Signinup/ImagePicker";
 export { default as NavHeader } from "./NavHeader";
 export { default as ProfileCard } from "./ProfileCard";
 export {default as Rating} from "./Rating";
 export {default as ContentContainer} from "./ContentContainer";
 export {default as Dashboard} from "./Dashboard";
 export {default as CodeList} from "./CodeList";
+export {default as CodeEditor} from "./CodeEditor";

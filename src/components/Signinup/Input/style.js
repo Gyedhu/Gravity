@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import { colors } from "../../assets/theme";
+import { colors } from "../../../assets/theme";
 
 export const Container = styled.div`   
     display: flex;

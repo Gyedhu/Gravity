@@ -1,28 +1,28 @@
 import React from "react";
 import { Container, Box } from "./style";
 
-const DashboardContainer = () => {
+const DashboardContainer = ({ goto }) => {
     return (
         <Container>
-        <Box>
-                    <span className="material-icons">code</span>
-                    <span>Code</span>
-                </Box>
+            <Box onClick={() => goto("code")} delay="0">
+                <span className="material-icons">code</span>
+                <span>Code</span>
+            </Box>
 
-                <Box>
-                    <span className="material-icons">chat</span>
-                    <span>Chat</span>
-                </Box>
+            <Box  delay=".1">
+                <span className="material-icons">chat</span>
+                <span>Chat</span>
+            </Box>
 
-                <Box>
-                    <span className="material-icons">post_add</span>
-                    <span>Upload</span>
-                </Box>
+            <Box  delay=".2">
+                <span className="material-icons">add</span>
+                <span>Upload</span>
+            </Box>
 
-                <Box>
-                    <span className="material-icons">help</span>
-                    <span>Ask</span>
-                </Box>
+            <Box  delay=".3">
+                <span className="material-icons">help_outline</span>
+                <span>Ask</span>
+            </Box>
         </Container>
     );
 }
