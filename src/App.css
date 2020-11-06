@@ -10,20 +10,18 @@
 .container__content {
     width: 440px;
     max-width: 100%; 
-    padding: 10px;
     text-align: center;
-
 }
 
 .container_editor_area {
     tab-size: 4ch;
     max-height: 400px; 
-    overflow: auto; 
-    margin: 1.67em 0;
+    overflow: auto;  
 }
 
 .container__editor {   
-    background-color: #F9F9F9; 
+    background-color: #fefefe; 
+    border: 1px solid #AAA;
     box-sizing: border-box;   
     font-family: "Expletus Sans";
     flex: 1; 

@@ -1,42 +1,44 @@
-import React, { useState } from "react";
-import logo from "../../assets/logo.svg";
-import { Redirect } from "react-router-dom";
-import { View, Button } from "../../components/index";
-import { colors } from "../../assets/theme";
+import React from "react";
+import { AuthenticationContainer, LogoBox, ImagePickerBox } from "../../components";
+import useFirebase from "../../firebase/useFirebase";
+import { setUrl, changePage } from "../../Redux/actions";
+import { connect } from "react-redux";
+import { useState } from "react";
 
-const LandingPage = () => {
+const mapDispatchtoProps = dispatch => ({
+    setUrl: url => dispatch(setUrl(url)),
+    changePage: page => dispatch(changePage(page))
+});
 
-    const [goto, setGoto] = useState(false);
-    const changeRoute = () => setGoto(true);
+export default connect(null, mapDispatchtoProps)(
+    function OtherInfo({ setUrl, changePage }) {
 
-    return (
-        <View>
-            <img src={logo} alt="logo" />
+        const { uploadImage } = useFirebase();
+        const [file, setFile] = useState(null);
 
-            <h1 style={{
-                color: colors.primary,
-                fontFamily: "Noto Sans TC , sans- serif",
-                fontSize: "3em",
-                margin: "0"
-            }}
-            >
-                Gravity
-            </h1>
+        const pickImage = file => {
+            const url = URL.createObjectURL(file);
+            setUrl(url);
+            setFile(file);
+        }
 
-            <h1 style={{
-                color: colors.primary,
-                fontFamily: "Noto Sans TC , sans- serif",
-                fontSize: "4em",
-                margin: "0"
-            }}
-            >
-                Comming Soon
-            </h1>
+        const onSubmit = async () => {
+            const url = await uploadImage(file);
+            setUrl(url);
+        }
 
-            <Button title="Goto Signin" link={true} onClick={changeRoute} />
-            {goto && <Redirect to="/sign-in-up" />}
-        </View >
-    );
-}
+        const gotoProfile = () => {
+            changePage("/profile");
+        }
 
-export default LandingPage;
+        return (
+            <AuthenticationContainer >
+                <LogoBox />
+                <ImagePickerBox
+                    onPick={pickImage}
+                    onSkip={gotoProfile}
+                    onSubmit={onSubmit}
+                />
+            </AuthenticationContainer>
+        )
+    });

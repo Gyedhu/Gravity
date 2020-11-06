@@ -1,8 +1,12 @@
-import { SET_LOADING, SET_NOTIFICATION } from "../contants";
+import {
+    SET_LOADING,
+    PUSH_NOTIFICATION,
+    POP_NOTIFICATION
+} from "../constants";
 
 const initialState = {
     loading: "",
-    notification: ""
+    notifications: null
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -13,8 +17,11 @@ const reducer = (state = initialState, action = {}) => {
         case SET_LOADING:
             return { ...state, loading: payload ? payload : "" };
 
-        case SET_NOTIFICATION:
-            return { ...state, notification: payload ? payload : "" };
+        case PUSH_NOTIFICATION:
+            return { ...state, notifications: payload };
+
+        case POP_NOTIFICATION:
+            return { ...state, notifications: null };
 
         default:
             return state;

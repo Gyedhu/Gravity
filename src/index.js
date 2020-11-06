@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./Redux/store";
 import firebase from "firebase/app";
@@ -13,16 +12,14 @@ import dotenv from "dotenv";
 dotenv.config();
 const apikey = process.env.REACT_APP_FIREBASE_API_KEY;
 const firebaseConfig = JSON.parse(apikey);
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig); 
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <App />
     </Provider>
-  </React.StrictMode>,
+  </React.StrictMode >,
   document.getElementById('root')
 );
 

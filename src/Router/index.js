@@ -1,16 +1,24 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
-import { LandingPage, SignInUp, Homepage } from "../Pages/index";
+import { ProfilePage, Signin, Signup, OtherInfo, ImagePicker } from "../Pages/index";
+import { connect } from "react-redux";
 
-const Router = () => {
-    return (
-        <Switch>
-            <Route exact path="/" component={SignInUp} />
-            <Route path="/homepage" component={Homepage} />
-            <Route path="/LandingPage" component={LandingPage} />
-        </Switch>
-    );
-}
+const mapStateToProps = (state) => ({
+    currentPage: state.route.currentPage
+});
 
-export default Router;
-
+export default connect(mapStateToProps)(function Router({ currentPage }) {
+    switch (currentPage) {
+        case "/":
+            return <Signin />;
+        case "/signup":
+            return <Signup />;
+        case "/profile":
+            return <ProfilePage />
+        case "/other_info":
+            return <OtherInfo />
+        case "/image_picker":
+            return <ImagePicker />
+        default:
+            return null;
+    }
+});

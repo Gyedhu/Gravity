@@ -4,29 +4,65 @@ body {
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
   margin: 0;
-  /* overflow: scroll; */
+  overflow: auto;
+  position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+@keyframes fade_pop_up { 
+  0% {
+    transform: scale(.75);   
+    opacity: 0;
+  } 
+  100% {
+    transform: scale(1);  
+    opacity: 1;
+  }
+}
+ 
+body * {
+    /* border: 1px dashed orange;  */
+    box-sizing: border-box;
+  }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
- *{
+ * {
    box-sizing: border-box;
- }
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   font-family: Jost;
+   outline: 0;
+  }
+  
+  button:active {
+    opacity: .5;
+  }
 
-/*  
-body::-webkit-scrollbar {
-  width: .5em;
+ /* input,
+ button {
+   font-family: Open Sans;
+ } */
+
+ 
+*::-webkit-scrollbar {
+  background: #EEE; 
+  display: flex;  
+  height: 5px;
+  width: 5px;
 }
  
-body::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px #BCD;
-}
- 
-body::-webkit-scrollbar-thumb {
-  background-color: dodgerblue; 
+/* *::-webkit-scrollbar-track {
+  background: #6782E050;
+  border-radius: 10px;
+  width: 5px;
 } */
+ 
+*::-webkit-scrollbar-thumb {
+  background: #6782E050;
+  border-radius: 10px;
+  width: 5px;
+}

@@ -1,44 +1,23 @@
 import {
     SET_LOADING,
-    SET_NOTIFICATION,
-    SET_SIGNUP_DATA,
-    SET_OTHER_INFO,
-    SET_UID,
-    SET_NAME,
-    SET_EMAIL,
-    SET_PROFESSION,
+    SET_SIGNUP_DATA, 
     CLEAR_USER_DATA,
-    SET_USER_DATA
-} from "./contants"
+    SET_USER_DATA,
+    PUSH_NOTIFICATION,
+    POP_NOTIFICATION,
+    CHANGE_PAGE,
+    SET_URL
+} from "./constants";
 
 // user actions   
-export const setUID = payload => ({
-    type: SET_UID,
-    payload
-});
-
-export const setName = payload => ({
-    type: SET_NAME,
-    payload
-});
-
-export const setEmail = payload => ({
-    type: SET_EMAIL,
-    payload
-});
-
-export const setProfession = payload => ({
-    type: SET_PROFESSION,
-    payload
-});
 
 export const setSignupData = payload => ({
     type: SET_SIGNUP_DATA,
     payload
 });
 
-export const setOtherInfo = payload => ({
-    type: SET_OTHER_INFO,
+export const setUrl = payload => ({
+    type: SET_URL,
     payload
 });
 
@@ -60,8 +39,19 @@ export const setLoading = payload => ({
     payload
 });
 
-export const setNotification = payload => ({
-    type: SET_NOTIFICATION,
+export const pushNotification = payload => ({
+    type: PUSH_NOTIFICATION,
     payload
 });
 
+export const popNotification = () => ({
+    type: POP_NOTIFICATION
+});
+
+
+// Router actions
+
+export const changePage = payload => ({
+    type: CHANGE_PAGE,
+    payload
+});

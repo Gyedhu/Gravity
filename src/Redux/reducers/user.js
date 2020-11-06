@@ -1,40 +1,45 @@
-import { SET_SIGNUP_DATA, SET_OTHER_INFO, CLEAR_USER_DATA, SET_USER_DATA } from "../contants";
+import {
+    SET_SIGNUP_DATA,
+    CLEAR_USER_DATA,
+    SET_USER_DATA,
+    SET_URL
+} from "../constants";
+
+import user_logo from "../../assets/hero-illustration.svg";
 
 const initialState = {
     uid: null,
-    name: null,
-    email: null,
+    name: "Yedhumohanan_G",
+    email: "gyedhumohanan@gmail.com",
     password: null,
-    imageUrl: null,
+    imageUrl: user_logo,
     gender: null,
     dob: null,
-    profession: null,
-    stars: null
+    profession: "Developer",
+    stars: 2
 };
 
 const reducer = (state = initialState, action = {}) => {
     const { type, payload } = action;
 
     switch (type) {
+
         case SET_SIGNUP_DATA:
             return {
                 ...state,
                 name: payload.name,
                 email: payload.email,
-                password: payload.password
+                password: payload.password,
+                profession: payload.profession,
             };
 
-        case SET_OTHER_INFO:
+        case SET_URL:
             return {
                 ...state,
-                dob: payload.dob,
-                gender: payload.gender,
-                imageUrl: payload.url,
-                profession: payload.profession,
-                whatYouDoing: payload.wdn
+                imageUrl: payload
             };
 
-        case SET_USER_DATA: 
+        case SET_USER_DATA:
             return {
                 uid: payload.uid,
                 name: payload.name,
