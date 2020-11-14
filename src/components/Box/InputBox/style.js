@@ -21,7 +21,7 @@ export const Input = styled.input`
     width: 100%; 
 
     &::placeholder {
-        color: ${colors.primary}80;
+        color: ${colors.primary}A0;
     }
 `;
 
