@@ -1,5 +1,5 @@
 import React from "react";
-import { ProfilePage, Signin, Signup, OtherInfo, ImagePicker } from "../Pages/index";
+import { ProfilePage, Signin, Signup, OtherInfo, ImagePicker, Write, Chat, Search } from "../Pages/index";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => ({
@@ -13,11 +13,17 @@ export default connect(mapStateToProps)(function Router({ currentPage }) {
         case "/signup":
             return <Signup />;
         case "/profile":
-            return <ProfilePage />
+            return <ProfilePage />;
         case "/other_info":
-            return <OtherInfo />
+            return <OtherInfo />;
         case "/image_picker":
-            return <ImagePicker />
+            return <ImagePicker />;
+        case "/write":
+            return <Write />;
+        case "/chat":
+            return <Chat />;
+        case "/search":
+            return <Search />;
         default:
             return null;
     }

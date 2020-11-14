@@ -1,19 +1,19 @@
 import React from "react";
 import { AuthenticationContainer, LogoBox, ImagePickerBox } from "../../components";
-import useFirebase from "../../firebase/useFirebase";
+import useImageUploader from "../../firebase/useImageUploader";
 import { setUrl, changePage } from "../../Redux/actions";
 import { connect } from "react-redux";
 import { useState } from "react";
 
 const mapDispatchtoProps = dispatch => ({
     setUrl: url => dispatch(setUrl(url)),
-    changePage: page => dispatch(changePage(page))
+    gotoProfile: () => dispatch(changePage("/profile"))
 });
 
 export default connect(null, mapDispatchtoProps)(
     function OtherInfo({ setUrl, changePage }) {
 
-        const { uploadImage } = useFirebase();
+        const uploadImage = useImageUploader();
         const [file, setFile] = useState(null);
 
         const pickImage = file => {
@@ -23,12 +23,11 @@ export default connect(null, mapDispatchtoProps)(
         }
 
         const onSubmit = async () => {
-            const url = await uploadImage(file);
-            setUrl(url);
+            uploadImage(file);
         }
 
         const gotoProfile = () => {
-            changePage("/profile");
+            gotoProfile();
         }
 
         return (

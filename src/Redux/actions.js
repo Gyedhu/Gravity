@@ -1,11 +1,12 @@
 import {
     SET_LOADING,
-    SET_SIGNUP_DATA, 
+    SET_SIGNUP_DATA,
     CLEAR_USER_DATA,
     SET_USER_DATA,
     PUSH_NOTIFICATION,
     POP_NOTIFICATION,
     CHANGE_PAGE,
+    CHANGE_WRITE_PAGE,
     SET_URL
 } from "./constants";
 
@@ -53,5 +54,13 @@ export const popNotification = () => ({
 
 export const changePage = payload => ({
     type: CHANGE_PAGE,
+    payload
+});
+
+
+// Write actions
+
+export const changeWritePage = payload => ({
+    type: CHANGE_WRITE_PAGE,
     payload
 });

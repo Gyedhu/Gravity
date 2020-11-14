@@ -1,20 +1,26 @@
 import React from "react";
 import { AuthenticationContainer, LogoBox, InputBox, FormButton } from "../../components";
 import { useForm } from "react-hook-form";
-import useFirebase from "../../firebase/useFirebase";
+import useSignin from "../../firebase/useSignin";
 
 export default function Signin() {
 
+    // useForm
     const { handleSubmit, register, errors } = useForm();
-    const { signIn } = useFirebase();
+    // useSignin
+    const signIn = useSignin();
 
-    const onSubmit = data => {
-        signIn(data.email, data.password);
+    // Submit
+    const onSubmitHandler = data => {
+        // Read email and password
+        const { email, password } = data;
+        // signin ------
+        signIn(email, password);
     }
 
     return (
         <AuthenticationContainer
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(onSubmitHandler)}
         >
             <LogoBox />
             <InputBox

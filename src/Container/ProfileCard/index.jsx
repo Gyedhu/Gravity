@@ -1,24 +1,11 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { ProfileCardContainer, ProfileImage, UserInfo } from '../../components'
+import React from "react" ;
+import { ProfileImage, UserInfo, VerticalBox } from "../../components";
 
-export const ProfileCard = () => {
+export default function ProfileCard() {
     return (
-        <div>
-            <ProfileCardContainer>
-                <ProfileImage />
-                <UserInfo />
-            </ProfileCardContainer>
-        </div>
-    )
-}
-
-const mapStateToProps = (state) => ({
-
-})
-
-const mapDispatchToProps = {
-
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileCard)
+        <VerticalBox>
+            <ProfileImage />
+            <UserInfo />
+        </VerticalBox>
+    );
+} 

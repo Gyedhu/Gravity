@@ -1,59 +1,48 @@
 import styled from "styled-components";
-import { colors, mediaQuery } from "../../../assets/theme";
+import { colors } from "../../../assets/theme";
 
-export const Container = styled.div` 
-    align-items: center; 
+export const Container = styled.div`    
     cursor: pointer;
     display: flex;
-    flex: 1; 
-    grid-gap: 10px;
-    min-width: 250px;  
-    transition: .5s;
-    user-select: none;
-
-    & > * {
-        animation: fade_pop_up .5s;
-    }
-
-    &:active {
-        opacity: .25;
-    }
+    flex: 1;  
+    grid-gap: 10px; 
+    min-width: 300px;    
+    transition: .2s;
+    user-select: none;   
     
-    @media (max-width: ${mediaQuery.tablet}) {
-        padding: 20px;
+    &:active {
+        opacity: .2;
     }
 `;
 
 export const Icon = styled.i`
     align-items: center;
-    background: ${colors.secondary};
-    border-radius: 5%;
+    background: ${colors.secondary}; 
+    border-radius: 15%;
     color: ${colors.light};
     display: flex;
-    font-size: 3em; 
+    font-size: 3.5em; 
     height: 80px;
-    justify-content: center;
-    width: 80px;
+    justify-content: center; 
+    min-width: 80px;
 `;
 
 export const TextContent = styled.div`  
-    color: ${colors.primary};
+    align-self: flex-end; 
+    background: transparent;
+    color: ${colors.primary};   
     display: flex;
-    flex: 1;
-    flex-direction: column; 
-
-    & > * {
-        margin: 0;
-    }
+    flex-direction: column;
 `;
 
 export const BigText = styled.p`  
-    flex: 1;
-    font-size: 2em;       
+    color: ${colors.primary};  
+    font-size: 2.2em;       
+    cursor: pointer;
 `;
 
 export const Text = styled.p`   
-    color: ${colors.primary}D0; 
-    font-size: 1.5em;  
+    color: ${colors.primary}; 
+    font-size: 1.4em;    
 `;
 

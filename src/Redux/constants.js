@@ -15,3 +15,6 @@ export const POP_NOTIFICATION = "POP_NOTIFICATION";
 
 // Router actions
 export const CHANGE_PAGE = "CHANGE_PAGE";
+
+// Write 
+export const CHANGE_WRITE_PAGE = "CHANGE_WRITE_PAGE";

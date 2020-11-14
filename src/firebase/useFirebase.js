@@ -6,7 +6,7 @@ import {
 	changePage,
 	setUserData
 } from "../Redux/actions";
-import { auth, database, storage } from "firebase";
+import { auth, database, storage, firestore } from "firebase";
 
 const useFirebase = () => {
 
@@ -99,6 +99,51 @@ const useFirebase = () => {
 			dispatch(pushNotification(error.message ? error.message : error));
 		}
 	}
+
+	const fetchData = async () => {
+		const docRef = firestore().doc("users/message");
+		try {
+			docRef.onSnapshot(snap => {
+				console.log(snap.data());
+				dispatch({
+					type: "set_data",
+					payload: snap.data()
+				})
+			});
+			dispatch(pushNotification("Success"));
+		}
+		catch {
+			dispatch(pushNotification("Error while notification"));
+		}
+	}
+
+
+	const setData = (text) => new Promise(
+
+		async (resolve, reject) => {
+
+			const docRef = firestore().doc("users/message");
+
+			dispatch(setLoading("Please wait ..."));
+
+			const date = new Date();
+
+			try {
+				await docRef.set({
+					message: text,
+					date: date.toLocaleString()
+				});
+				dispatch(pushNotification("Success"));
+			}
+			catch (error) {
+				console.log(error);
+				dispatch(pushNotification("Failed to push data"));
+			}
+			finally {
+				dispatch(setLoading(null));
+			}
+		}
+	)
 
 	const pushUserData = (uid, data) => new Promise(async (resolve, reject) => {
 
@@ -223,7 +268,9 @@ const useFirebase = () => {
 		signIn,
 		signUp,
 		signOut,
-		uploadImage
+		uploadImage,
+		setData,
+		fetchData
 	};
 }
 

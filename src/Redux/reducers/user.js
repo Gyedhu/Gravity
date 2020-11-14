@@ -44,7 +44,7 @@ const reducer = (state = initialState, action = {}) => {
                 uid: payload.uid,
                 name: payload.name,
                 email: payload.email,
-                imageUrl: payload.url,
+                imageUrl: payload.imageUrl,
                 profession: payload.profession,
                 stars: payload.stars
             };

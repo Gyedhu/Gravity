@@ -8,7 +8,7 @@ export const Image = styled.div`
     background-color: ${colors.light};
     background-size: cover; 
     border:  1px solid #DDD;
-    border-radius: 5%; 
+    border-radius: 15%;  
     height: 150px; 
     width: 150px; 
 `; 

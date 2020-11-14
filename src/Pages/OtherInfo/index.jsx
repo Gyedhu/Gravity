@@ -1,20 +1,24 @@
 import React from "react";
 import { AuthenticationContainer, LogoBox, InputBox, FormButton, SelectBox } from "../../components";
 import { useForm } from "react-hook-form";
-import useFirebase from "../../firebase/useFirebase";
+import useSignup     from "../../firebase/useSignup";
 
 export default function OtherInfo() {
 
+    // userForm
     const { handleSubmit, register, errors } = useForm();
-    const { signUp } = useFirebase();
 
-    const onSubmit = data => {
+    // useSignup
+    const   signUp   = useSignup();
+
+    // Submit --- 
+    const onSubmitHandler = data => {
         signUp(data);
     }
 
     return (
         <AuthenticationContainer
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(onSubmitHandler)}
         >
             <LogoBox />
 
@@ -35,7 +39,7 @@ export default function OtherInfo() {
             <FormButton
                 title="Submit"
                 subtext="Previous?"
-                to="signup"
+                to="/signup"
             />
         </AuthenticationContainer>
     )

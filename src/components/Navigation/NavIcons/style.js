@@ -26,7 +26,7 @@ export const Icon = styled.i`
     }
 
     @media (max-width: ${mediaQuery.mobile}) {
-        display: none;
+        ${'' /* display: none; */}
     }
 `;
 

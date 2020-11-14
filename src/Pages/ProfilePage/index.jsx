@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Navigation, ProfileCard, Dashboard } from "../../Container";
+import { ScrollView } from "../../components";
 
 export default function ProfilePage() {
 
@@ -16,8 +17,10 @@ export default function ProfilePage() {
     return (
         <>
             <Navigation />
-            <ProfileCard />
-            <Dashboard />
+            <ScrollView>
+                <ProfileCard />
+                <Dashboard />
+            </ScrollView>
         </>
     );
 } 
