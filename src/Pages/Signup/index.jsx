@@ -6,7 +6,7 @@ import { setSignupData, changePage } from "../../Redux/actions";
 
 // Redux functions
 const mapDispatchToProps = dispatch => ({
-    setSignupData: (name, email, password, profession) => dispatch(setSignupData({ name, email, password, profession })),
+    setSignupData: (name, email, profession) => dispatch(setSignupData({ name, email, profession })),
     gotoNext: () => dispatch(changePage("/other_info"))
 });
 
@@ -21,12 +21,12 @@ export default connect(null, mapDispatchToProps)(
         const onSubmit = data => {
 
             // Get user data
-            const { username, email, password, profession } = data;
+            const { username, email, profession } = data;
 
             // Set user data to state
-            setSignupData(username, email, password, profession);
+            setSignupData(username, email, profession);
 
-            // Going to next page
+            // Going to next page 
             gotoNext();
         }
 
@@ -46,13 +46,6 @@ export default connect(null, mapDispatchToProps)(
                     label="Email"
                     ref={register({ required: true })}
                     error={errors.email && "Please enter your email!"}
-                />
-
-                <InputBox
-                    type="password"
-                    label="Password"
-                    ref={register({ required: true, minLength: 8 })}
-                    error={errors.password && "Please check you password!(Note: Password atleast need 8 charectors)"}
                 />
 
                 <SelectBox

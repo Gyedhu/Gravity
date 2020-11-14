@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import { colors } from "../../../assets/theme";
 
-export const Container = styled.div`  
+export const Container = styled.div` 
     display: flex;
     flex-direction: column;
     grid-gap: 5px;  
     
-    & > * {
-        border-radius: 50px;
+    & > * {   
         cursor: pointer;
         font-size: 1.5em; 
         outline: 0; 
@@ -19,10 +18,11 @@ export const Container = styled.div`
 `;
 
 export const Button = styled.button`
-    background: ${colors.secondary};
+    background: ${colors.secondary}ee;
     border: 0;
+    border-radius: 50px; 
     color: ${colors.light};   
-    height: 60px;
+    height: 50px;
  
 `;
 
@@ -31,6 +31,6 @@ export const SubButton = styled.button`
     border: 0;
     color: ${colors.secondary}; 
     text-decoration: underline;  
-    height: 30px;
+    height: 50px;
 `;
 

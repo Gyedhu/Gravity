@@ -4,7 +4,7 @@ import { colors } from "../../../assets/theme";
 export const Container = styled.div` 
     display: flex; 
     justify-content: center;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     padding: 10px 0;
     
 `;
@@ -22,11 +22,11 @@ export const LogoContainer = styled.div`
 `;
 
 export const Logo = styled.img`
-    height: 80px;
+    height: 60px;
 `;
 
 export const LogoText = styled.p` 
-    font-size: 3em; 
+    font-size: 2.5em; 
 `;
 
 export const Text = styled.p` 

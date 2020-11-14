@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import { Container, Select } from "./style";
+import { Container, Select, ExpandIcon } from "./style";
 
 export default forwardRef(({ label, type, options }, ref) => {
     return (
@@ -17,6 +17,7 @@ export default forwardRef(({ label, type, options }, ref) => {
                         : null
                 }
             </Select>
+            <ExpandIcon className="ri-arrow-drop-down-line"></ExpandIcon>
         </Container >
     )
 });

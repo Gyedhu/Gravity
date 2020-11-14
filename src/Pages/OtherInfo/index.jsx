@@ -1,7 +1,7 @@
 import React from "react";
 import { AuthenticationContainer, LogoBox, InputBox, FormButton, SelectBox } from "../../components";
 import { useForm } from "react-hook-form";
-import useSignup     from "../../firebase/useSignup";
+import useSignup from "../../firebase/useSignup";
 
 export default function OtherInfo() {
 
@@ -9,7 +9,7 @@ export default function OtherInfo() {
     const { handleSubmit, register, errors } = useForm();
 
     // useSignup
-    const   signUp   = useSignup();
+    const signUp = useSignup();
 
     // Submit --- 
     const onSubmitHandler = data => {
@@ -34,6 +34,13 @@ export default function OtherInfo() {
                 label="Gender"
                 ref={register({ required: true })}
                 options={["Male", "Female", "Other"]}
+            />
+
+            <InputBox
+                type="password"
+                label="Password"
+                ref={register({ required: true, minLength: 8 })}
+                error={errors.password && "Please check you password!(Note: Password atleast need 8 charectors)"}
             />
 
             <FormButton

@@ -59,7 +59,7 @@ const useImageUploader = () => {
 				let percentage = Math.round(snap.bytesTransferred / snap.totalBytes) * 100;
 
 				// Display upload progress
-				loading(`${percentage} % uploaded`);
+				loading(`${percentage}% uploaded`);
 			},
 
 			// Error

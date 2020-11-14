@@ -11,7 +11,7 @@ const mapDispatchtoProps = dispatch => ({
 });
 
 export default connect(null, mapDispatchtoProps)(
-    function OtherInfo({ setUrl, changePage }) {
+    function OtherInfo({ setUrl, gotoProfile }) {
 
         const uploadImage = useImageUploader();
         const [file, setFile] = useState(null);
@@ -24,10 +24,6 @@ export default connect(null, mapDispatchtoProps)(
 
         const onSubmit = async () => {
             uploadImage(file);
-        }
-
-        const gotoProfile = () => {
-            gotoProfile();
         }
 
         return (

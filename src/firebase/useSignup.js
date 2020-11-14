@@ -7,17 +7,18 @@ const useSignup = () => {
 
 	// Redux functions
 	const dispatch = useDispatch();
-	const { email, name, profession, password } = useSelector(state => state.user);
+	const { email, name, profession } = useSelector(state => state.user);
 	const notification = useCallback(message => dispatch(pushNotification(message)), [dispatch]);
 	const gotoImagePicker = useCallback(() => dispatch(changePage("/image_picker")), [dispatch]);
 	const loading = useCallback(message => dispatch(setLoading(message)), [dispatch]);
 
+	console.log(email, name, profession)
 
 	// Signup
 	const signup = async (data) => {
 
 		// Get other data
-		const { dob, gender } = data;
+		const { dob, gender, password } = data;
 
 		try {
 

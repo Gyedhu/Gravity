@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { colors, mediaQuery } from "../../../assets/theme";
 
 export const Container = styled.div` 
-    align-items: center; 
+    border: 1px solid black;
+    align-items: center;  
     cursor: pointer;
     display: flex;
     flex: 1; 

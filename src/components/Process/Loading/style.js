@@ -1,32 +1,30 @@
 import styled, { keyframes } from "styled-components";
 import { colors } from "../../../assets/theme";
 
-const loadingPopup = keyframes`
-    0% { transform: translate(-50%,  0) scale3d(0.8,0.8,1); } 
-    100% { transform: translate(-50%, 30px) scale3d(1,1,1); }
-`;
-
-export const Container = styled.div` 
-    animation: ${loadingPopup} .5s forwards;
+export const Container = styled.div`  
     align-items: center; 
+    animation: ${keyframes`
+        0% {
+            transform: translate(-50%, 20px);
+        }
+    `} .5s;
     background: ${colors.secondary}ee;
-    border: 1px solid ${colors.light};
-    border-radius: 50px;
+    border: 1px solid ${colors.light}; 
     box-sizing: border-box;  
     color: ${colors.light};
     display: flex;
-    font-family: "Noto Sans TC", "sans-serif";
+    font-family: "Noto Sans TC", "sans-serif"; 
     flex-direction: row;  
     height: fit-content;
     justify-content: center;
     left: 50%;
-    max-width: 80%;
+    max-width: 350px;
     overflow: hidden;
-    padding: 10px 20px;
+    padding: 10px;
     position: fixed;
-    top: 0; 
-    transform: translate(-50%, 50%);
-    width: fit-content; 
+    top: 10px; 
+    transform: translate(-50%, 0);
+    width: 95%; 
     z-index: 2;
 `;
 

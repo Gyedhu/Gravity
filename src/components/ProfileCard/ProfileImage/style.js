@@ -9,6 +9,6 @@ export const Image = styled.div`
     background-size: cover; 
     border:  1px solid #DDD;
     border-radius: 15%;  
-    height: 150px; 
-    width: 150px; 
+    height: 200px; 
+    width: 200px; 
 `; 

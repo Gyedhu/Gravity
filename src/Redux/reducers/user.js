@@ -9,14 +9,14 @@ import user_logo from "../../assets/hero-illustration.svg";
 
 const initialState = {
     uid: null,
-    name: "Yedhumohanan_G",
-    email: "gyedhumohanan@gmail.com",
+    name: " ",
+    email: " ",
     password: null,
     imageUrl: user_logo,
     gender: null,
     dob: null,
-    profession: "Developer",
-    stars: 2
+    profession: " ",
+    stars: 0
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -29,7 +29,6 @@ const reducer = (state = initialState, action = {}) => {
                 ...state,
                 name: payload.name,
                 email: payload.email,
-                password: payload.password,
                 profession: payload.profession,
             };
 
