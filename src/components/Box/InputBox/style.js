@@ -1,20 +1,18 @@
 import styled from "styled-components";
 import { colors } from "../../../assets/theme";
 
-export const Container = styled.div`   
-    border: 1px solid ${colors.primary}50;
-    border-radius: 50px;
+export const Container = styled.div`  
     display: flex; 
     flex-direction: column;
-    margin-bottom: 10px; 
-    overflow: hidden;
+    margin-bottom: 10px;  
     position: relative;
 `;
 
 export const Input = styled.input`
     background: transparent;
     background: ${colors.secondary}25; 
-    border: 0;  
+    border: 1px solid ${colors.primary}50; 
+    border-radius: 50px;
     color: ${colors.primary}; 
     font-size: 1.6em;
     height: 50px;
